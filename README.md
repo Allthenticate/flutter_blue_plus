@@ -339,7 +339,7 @@ import 'dart:math';
 //    1. due to splitting, `characteristic.read()` will return partial data.
 //    2. it can only be used *with* response to avoid data loss
 //    3. The characteristic must be designed to support split data
-extension splitWrite on BluetoothCharacteristic {
+extension SplitWrite on BluetoothCharacteristic {
   Future<void> splitWrite(List<int> value, {int timeout = 15}) async {
     int chunk = min(device.mtuNow - 3, 512); // 3 bytes BLE overhead, 512 bytes max
     for (int i = 0; i < value.length; i += chunk) {
